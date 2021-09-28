@@ -2,7 +2,7 @@
 FROM golang:latest AS build
 
 # Version Variable
-ENV SETUP="false"
+ENV SETUP_FILE="/protonmail/first_run.txt"
 ENV BRIDGE_VERSION="1.8.9"
 
 # Install Build Dependencies

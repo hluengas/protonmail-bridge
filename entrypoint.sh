@@ -3,12 +3,16 @@
 set -ex
 
 # Check For First Time Setup
-if [[ $SETUP == "false" ]]; then
+# If setup file exists, run normally
+if test -f "$SETUP"; then
 
     /protonmail/proton-bridge --cli $@
 
 # Otherwise
 else
+
+    # Create setup file, will be empty, just using its existance as a boolean
+    touch $SETUP
 
     # Initialize pass
     gpg --generate-key --batch /protonmail/gpgparams

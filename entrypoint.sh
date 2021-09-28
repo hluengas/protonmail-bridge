@@ -6,7 +6,11 @@ set -ex
 # If setup file exists, run normally
 if test -f "$SETUP_FILE"; then
 
-    /proton/proton-bridge --cli $@
+    # Start protonmail
+    # Fake a terminal, so it does not quit because of EOF...
+    rm -f fake_terminal
+    mkfifo fake_terminal
+    cat fake_terminal | /proton/proton-bridge --cli $@
 
 # Otherwise
 else
@@ -18,7 +22,10 @@ else
     gpg --generate-key --batch /proton/gpgparams
     pass init pass-key
 
-    # Login
-    /proton/proton-bridge --cli $@
+    # Start protonmail
+    # Fake a terminal, so it does not quit because of EOF...
+    rm -f fake_terminal
+    mkfifo fake_terminal
+    cat fake_terminal | /proton/proton-bridge --cli $@
 
 fi

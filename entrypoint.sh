@@ -6,7 +6,7 @@ set -ex
 # If setup file exists, run normally
 if test -f "$SETUP_FILE"; then
 
-    /protonmail-bridge/proton-bridge --cli $@
+    /proton/proton-bridge --cli $@
 
 # Otherwise
 else
@@ -15,10 +15,10 @@ else
     touch $SETUP_FILE
 
     # Initialize pass
-    gpg --generate-key --batch /protonmail-bridge/gpgparams
+    gpg --generate-key --batch /proton/gpgparams
     pass init pass-key
 
     # Login
-    /protonmail-bridge/proton-bridge --cli $@
+    /proton/proton-bridge --cli $@
 
 fi

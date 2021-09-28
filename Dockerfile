@@ -19,7 +19,7 @@ RUN git clone https://github.com/ProtonMail/proton-bridge.git && \
 FROM debian:latest
 
 # Setup Check File
-ENV SETUP_FILE="/protonmail-bridge/first_run.txt"
+ENV SETUP_FILE="/proton_data/first_run.txt"
 
 # Install dependencies
 # Install dependencies and protonmail bridge
@@ -29,13 +29,14 @@ RUN apt-get update && \
     libsecret-1-0
 
 # Copy scripts
-COPY gpgparams entrypoint.sh /protonmail-bridge/
+COPY gpgparams entrypoint.sh /proton/
 
 # Copy Binary From Build Stage
-COPY --from=build /build/proton-bridge/proton-bridge /protonmail-bridge/
+COPY --from=build /build/proton-bridge/proton-bridge /proton/
 
 EXPOSE 1025
 EXPOSE 1143
+VOLUME /proton_data
 
 # Start Protonmail-Bridge
-ENTRYPOINT ["bash", "/protonmail-bridge/entrypoint.sh"]
+ENTRYPOINT ["bash", "/proton/entrypoint.sh"]

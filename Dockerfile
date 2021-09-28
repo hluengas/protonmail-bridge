@@ -2,7 +2,6 @@
 FROM golang:latest AS build
 
 # Version Variable
-ENV SETUP_FILE="/protonmail/first_run.txt"
 ENV BRIDGE_VERSION="1.8.9"
 
 # Install Build Dependencies
@@ -19,6 +18,9 @@ RUN git clone https://github.com/ProtonMail/proton-bridge.git && \
 # Debian Base Image
 FROM debian:latest
 
+# Setup Check File
+ENV SETUP_FILE="/protonmail-bridge/first_run.txt"
+
 # Install dependencies
 # Install dependencies and protonmail bridge
 RUN apt-get update && \
@@ -27,13 +29,13 @@ RUN apt-get update && \
     libsecret-1-0
 
 # Copy scripts
-COPY gpgparams entrypoint.sh /protonmail/
+COPY gpgparams entrypoint.sh /protonmail-bridge/
 
 # Copy Binary From Build Stage
-COPY --from=build /build/proton-bridge/proton-bridge /protonmail/
+COPY --from=build /build/proton-bridge/proton-bridge /protonmail-bridge/
 
 EXPOSE 1025
 EXPOSE 1143
 
 # Start Protonmail-Bridge
-ENTRYPOINT ["bash", "/protonmail/entrypoint.sh"]
+ENTRYPOINT ["bash", "/protonmail-bridge/entrypoint.sh"]

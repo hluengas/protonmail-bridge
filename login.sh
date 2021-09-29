@@ -6,7 +6,7 @@ expect eof
 spawn pass init pass-key
 expect eof
 
-if { $env(2FA_CODE) == "123456" } {
+if { $env(2FA_CODE) == "false" } {
     # Login
     spawn /proton/proton-bridge --cli;
     expect ">>> "

@@ -24,7 +24,7 @@ EXPOSE 1143
 # Login Variables
 ENV USERNAME=""
 ENV PASSWORD=""
-ENV 2FA_CODE=""
+ENV 2FA_CODE="false"
 ENV LOGIN="false"
 ENV INTERACTIVE="false"
 

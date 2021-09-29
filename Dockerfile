@@ -18,8 +18,8 @@ RUN git clone https://github.com/ProtonMail/proton-bridge.git && \
 # Debian Base Image
 FROM debian:latest
 
-EXPOSE 1025
-EXPOSE 1143
+EXPOSE 25
+EXPOSE 143
 
 # Login Variables
 ENV USERNAME=""

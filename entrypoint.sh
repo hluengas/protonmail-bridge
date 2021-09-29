@@ -4,7 +4,7 @@
 # If setup file exists, run normally
 if [ $LOGIN == "false" ]; then
 
-    if [ $INTERACTIVE == "false"]; then
+    if [ $INTERACTIVE == "false" ]; then
         
         /proton/proton-bridge --noninteractive
     

@@ -10,7 +10,7 @@ if test -f "$SETUP_FILE"; then
     # Fake a terminal, so it does not quit because of EOF...
     rm -f fake_terminal
     mkfifo fake_terminal
-    cat fake_terminal | /proton/proton-bridge --cli $@
+    cat fake_terminal | /proton/proton-bridge --cli
 
 # Otherwise
 else
@@ -26,6 +26,6 @@ else
     # Fake a terminal, so it does not quit because of EOF...
     rm -f fake_terminal
     mkfifo fake_terminal
-    cat fake_terminal | /proton/proton-bridge --cli $@
+    cat fake_terminal | /proton/proton-bridge --cli
 
 fi

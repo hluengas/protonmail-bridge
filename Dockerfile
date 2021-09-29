@@ -32,9 +32,10 @@ ENV INTERACTIVE="false"
 # Install dependencies and protonmail bridge
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-    pass \
     expect \
-    libsecret-1-0
+    libsecret-1-0 \
+    pass \
+    socat
 
 # Copy Binary From Build Stage
 COPY --from=build /build/proton-bridge/proton-bridge /proton/

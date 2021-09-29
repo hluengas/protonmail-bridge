@@ -11,6 +11,8 @@ if [ $LOGIN == "false" ]; then
     else
 
         /proton/proton-bridge --cli
+        
+    fi
 
 else 
     expect /proton/login.sh

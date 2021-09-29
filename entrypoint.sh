@@ -1,31 +1,17 @@
-#!/bin/bash
-
-set -ex
+#!/usr/bin/bash
 
 # Check For First Time Setup
 # If setup file exists, run normally
-if test -f "$SETUP_FILE"; then
+if [ $LOGIN == "false" ]; then
 
-    # Start protonmail
-    # Fake a terminal, so it does not quit because of EOF...
-    rm -f fake_terminal
-    mkfifo fake_terminal
-    cat fake_terminal | /proton/proton-bridge --cli
+    if [ $INTERACTIVE == "false"]; then
+        
+        /proton/proton-bridge --noninteractive
+    
+    else
 
-# Otherwise
-else
+        /proton/proton-bridge --cli
 
-    # Create setup file, will be empty, just using its existance as a boolean
-    touch $SETUP_FILE
-
-    # Initialize pass
-    gpg --generate-key --batch /proton/gpgparams
-    pass init pass-key
-
-    # Start protonmail
-    # Fake a terminal, so it does not quit because of EOF...
-    rm -f fake_terminal
-    mkfifo fake_terminal
-    cat fake_terminal | /proton/proton-bridge --cli
-
+else 
+    expect /proton/login.sh
 fi

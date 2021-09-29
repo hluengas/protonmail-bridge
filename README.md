@@ -14,4 +14,4 @@ On first run the container will check for the presence of the SETUP_FILE if not 
 
 # Docker CLI Example:
 
-docker run -d --name=protonmail-bridge -v appdata/protonmail:/proton_data --restart=unless-stopped hluengas/protonmail-bridge:latest
+docker run -d --name=protonmail-bridge -v appdata/protonmail-bridge:/root:rw --restart=unless-stopped hluengas/protonmail-bridge:latest

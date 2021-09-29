@@ -1,7 +1,8 @@
-# protonmail-bridge
-debian docker container for protonmail bridge
+# ProtonMail Bridge
 
-# Environment Variables:
+Debian Docker container for running headless ProtonMail Bridge
+
+## Environment Variables:
 
 **LOGIN:**
 
@@ -23,7 +24,7 @@ ProtonMail Credentials: password. Value only used in the login script.
 
 ProtonMail Credentials: authenticator code. This value is highly time sensitive. Value only used if provided. Value only used in the login script.
 
-# Setup
+## Setup
 
 To setup the container, set the LOGIN variable to "true". Also add approriate credential values to their corresponding environment variables. You must also map a persitant volume for /root within the container, this will hold the keyring and config files.
 
@@ -70,7 +71,7 @@ The container will intialize pass. Then run bridge and attempt to login. The out
     Adding account ...
     Account yourusername was added successfully.
     >>> list
-    # : account              (status         , address mode   )
+    ## : account              (status         , address mode   )
     0 : yourusername         (connected      , combined       )
     >>> info
     Configuration for user@domain.com
@@ -95,7 +96,7 @@ In the final info section the bridge gives you the correct username and randomly
 
 Bridge will listen on ports 1143 and 1025 for IMAP and SMTP respectively, but the container listens for these services on ports 143 and 25. This is done because bridge expects to only recieve connections from localhost, so we have to spoof that using socat.
 
-# Post Setup
+## Post Setup
 
 Now that bridge has authenticated with protonmail and you have recorded the randomly generated app password, the container should be removed and re-run normally.
 
@@ -106,6 +107,12 @@ EX
     docker rm protonmail-bridge-container
 
     docker run -d --name="protonmail-bridge-container" -v /path/on/host/appdata/proton:/root:rw hluengas/protonmail-bridge:latest
+
+Depending on what type of docker network you use, or if you want to use ports other than 25 an 143, you may need to add port mappings at runtime.
+
+EX
+
+    -p 55525:25 -p 55143:143
 
 By default, the container will run in --noninteractive mode, because it will stop itself after a period of inactivity in --cli mode.
 

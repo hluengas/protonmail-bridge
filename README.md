@@ -3,27 +3,23 @@ debian docker container for protonmail bridge
 
 # Environment Variables:
 
-LOGIN:
+**LOGIN:**
 
 Boolean. If "true" run the login setup script. If "false" run bridge normally. Value defaults to "false".
 
-
-INTERACTIVE:
+**INTERACTIVE:**
 
 Boolean. If "true" bridge is run with the --cli parameter. If "false" bridge is run with the --noninteractive parameter. In CLI mode the bridge will exit automatically after a period of inactivity. Value defaults to "false".
 
-
-USERNAME:
+**USERNAME:**
 
 ProtonMail Credentials: username. Value only used in the login script.
 
-
-PASSWORD:
+**PASSWORD:**
 
 ProtonMail Credentials: password. Value only used in the login script.
 
-
-2FA_CODE:
+**2FA_CODE:**
 
 ProtonMail Credentials: authenticator code. This value is highly time sensitive. Value only used if provided. Value only used in the login script.
 
@@ -82,13 +78,13 @@ The container will intialize pass. Then run bridge and attempt to login. The out
     Address:   127.0.0.1
     IMAP port: 1143
     Username:  user@domain.com
-    Password:  tmWRvKKa7Xw1wEqL9AIOCw
+    Password:  tmWRvK9AIOCwKa7Xw1wEqL
     Security:  STARTTLS
     SMTP Settings
     Address:   127.0.0.1
     SMTP port: 1025
     Username:  user@domain.com
-    Password:  tmWRvKKa7Xw1wEqL9AIOCw
+    Password:  tmWRvK9AIOCwKa7Xw1wEqL
     Security:  STARTTLS
     >>> exit
 

@@ -18,6 +18,8 @@ if { $env(2FA_CODE) == "false" } {
     expect ">>> "
     send "list\r"
     expect ">>> "
+    send "info\r"
+    expect ">>> "
     send "exit\r"
     expect eof
 } else {
@@ -33,6 +35,8 @@ if { $env(2FA_CODE) == "false" } {
     send "$env(2FA_CODE)\r"
     expect ">>> "
     send "list\r"
+    expect ">>> "
+    send "info\r"
     expect ">>> "
     send "exit\r"
     expect eof

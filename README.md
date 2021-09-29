@@ -2,15 +2,30 @@
 debian docker container for protonmail bridge
 
 # Environment Variables:
-LOGIN - Boolean. If "true" run the login setup script. If "false" run bridge normally. Value defaults to "false".
 
-INTERACTIVE - Boolean. If "true" bridge is run with the --cli parameter. If "false" bridge is run with the --noninteractive parameter. In CLI mode the bridge will exit automatically after a period of inactivity. Value defaults to "false".
+LOGIN:
 
-USERNAME - ProtonMail Credentials: username. Value only used in the login script.
+Boolean. If "true" run the login setup script. If "false" run bridge normally. Value defaults to "false".
 
-PASSWORD - ProtonMail Credentials: password. Value only used in the login script.
 
-2FA_CODE - ProtonMail Credentials: authenticator code. This value is highly time sensitive. Value only used if provided. Value only used in the login script.
+INTERACTIVE:
+
+Boolean. If "true" bridge is run with the --cli parameter. If "false" bridge is run with the --noninteractive parameter. In CLI mode the bridge will exit automatically after a period of inactivity. Value defaults to "false".
+
+
+USERNAME:
+
+ProtonMail Credentials: username. Value only used in the login script.
+
+
+PASSWORD:
+
+ProtonMail Credentials: password. Value only used in the login script.
+
+
+2FA_CODE:
+
+ProtonMail Credentials: authenticator code. This value is highly time sensitive. Value only used if provided. Value only used in the login script.
 
 # Setup
 

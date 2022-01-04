@@ -2,7 +2,7 @@
 FROM golang:latest AS build
 
 # Version Variable
-ENV BRIDGE_VERSION="1.8.9"
+ENV BRIDGE_VERSION="2.0.1"
 
 # Install Build Dependencies
 RUN apt-get update && \
